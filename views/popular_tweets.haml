@@ -1,0 +1,14 @@
+%h2 Popular Tweets
+
+%form#query_form{:action => '/tweet_search', :method => 'post'}
+  %p
+    Find hot tweets about
+    %input{:type => 'text', :name => 'query'}
+    %input{:type => 'submit', :value => 'Search'}
+
+#tweets
+
+:javascript
+  $(function() {
+    $('#query_form').ajaxForm({ target: '#tweets' });
+  });

@@ -6,13 +6,13 @@ Given /^there exist the following popular tweets mentioning "([^"]*)":$/ do |que
   end
 end
 
-When /^I view popular tweets page$/ do
+When /^I view tweets page$/ do
   visit "/popular_tweets"
 end
 
 When /^I ask for popular tweets about "([^"]*)"$/ do |query|
-  fill_in "search", query
-  click_button "search"
+  fill_in "query", :with => query
+  click_button "Search"
 end
 
 Then /^I should see the following list of tweets:$/ do |table|
