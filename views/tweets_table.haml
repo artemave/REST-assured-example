@@ -1,0 +1,15 @@
+%table
+  %thead
+    %tr
+      %th &nbsp;
+      %th From User
+      %th Tweet
+      %th Date
+  %tbody
+    - tweets.each do |tweet|
+      %tr
+        %td.profile_image
+          %img{:src => tweet['profile_image_url'] }
+        %td.from_user= tweet['from_user']
+        %td.text= tweet['text']
+        %td.date= tweet['created_at'][/[^+]*/]
