@@ -5,7 +5,7 @@
     Find hot tweets about
     %input{:type => 'text', :name => 'query'}
     %input{:type => 'submit', :value => 'Search'}
-    %span.loading
+    %span.loading loading...
 
 #tweets
 
@@ -13,7 +13,7 @@
   $(function() {
     $('#query_form').ajaxForm({
       target: '#tweets',
-      beforeSubmit: function() { $('.loading').text('loading...').fadeIn() },
-      success: function() { $('.loading').fadeOut(function() { $(this).text('') }) }
+      beforeSubmit: function() { $('.loading').fadeIn() },
+      success: function() { $('.loading').fadeOut() }
     });
   });

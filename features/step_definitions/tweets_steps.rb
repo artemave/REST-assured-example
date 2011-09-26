@@ -26,7 +26,7 @@ When /^I ask for popular tweets about "([^"]*)"$/ do |query|
 end
 
 Then /^I should see those tweets$/ do
-  find('.loading').should_not have_content('loading...')
+  wait_until { !page.evaluate_script(%{$('.loading').is(':visible')}) }
 
   all('#tweets tbody tr').count.should == @users.length
 
