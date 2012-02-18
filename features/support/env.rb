@@ -1,22 +1,18 @@
 require 'capybara/cucumber'
-require 'rspec/expectations'
+require 'rspec'
 require 'rest-client'
+require 'rest-assured'
 
 Capybara.configure do |config|
   config.default_driver = :selenium
   config.run_server = false
-  config.app_host = "http://localhost:4579"
-  config.default_wait_time = 5
+  config.app_host = "http://localhost:4567"
 end
 
-module KnowsAboutRestAssured
-  def stub_server_host
-    'http://localhost:4578'
-  end
-end
+World(Capybara)
 
-World(Capybara, KnowsAboutRestAssured)
+RestAssured::Server.start(database: ':memory:')
 
 After do
-  RestClient.delete "#{stub_server_host}/doubles/all"
+  RestClient.delete "#{RestAssured::Server.address}/doubles/all"
 end
