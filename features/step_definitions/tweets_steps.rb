@@ -1,14 +1,10 @@
-require 'erb'
 require 'cgi'
+require 'erubis'
 
 Given /^there are the following popular tweets mentioning "([^"]*)":$/ do |query, table|
-  @query = query
-  @users = []
-  table.hashes.each do |row|
-    @users << row
-  end
-
-  tweets_json = ERB.new( File.read(File.expand_path('../tweets.json.erb', __FILE__)) ).result(binding)
+  @users      = table.hashes.clone
+  template    = File.read(File.expand_path('../tweets.json.erb', __FILE__))
+  tweets_json = Erubis::Eruby.new(template).result(users: @users)
 
   RestAssured::Double.create(
     fullpath: "/search.json?q=#{query}&result_type=popular",
