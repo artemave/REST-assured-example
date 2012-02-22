@@ -12,6 +12,15 @@ Given /^there are the following popular tweets mentioning "([^"]*)":$/ do |query
   )
 end
 
+Given /^there are no popular tweets about "([^"]*)"$/ do |query|
+  empty_tweets = %{{"completed_in":0.167,"max_id":0,"max_id_str":"0","page":1,"query":"#{query}","results":[],"results_per_page":15,"since_id":0,"since_id_str":"0"}}
+
+  RestAssured::Double.create(
+    fullpath: "/search.json?q=#{query}&result_type=popular",
+     content: empty_tweets
+  )
+end
+
 When /^I view tweets page$/ do
   visit "/popular_tweets"
 end
@@ -32,4 +41,8 @@ Then /^I should see those tweets$/ do
     row.find('.text').text.should               == CGI.unescapeHTML( @users[idx]['text'] )
     row.find('.date').text.should               == @users[idx]['date'][/[^+]*/].strip
   end
+end
+
+Then /^I should see$/ do |string|
+  page.should have_content(string)
 end

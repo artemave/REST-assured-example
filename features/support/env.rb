@@ -13,6 +13,6 @@ World(Capybara)
 
 RestAssured::Server.start(database: ':memory:')
 
-After do
+Before do
   RestClient.delete "#{RestAssured::Server.address}/doubles/all"
 end

@@ -16,6 +16,7 @@ post '/tweet_search' do
   haml :tweets_table,
     layout: false,
     locals: {
+       query: params[:query],
       tweets: JSON.parse(tweets_json)['results']
     }
 end

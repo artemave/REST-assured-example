@@ -6,10 +6,13 @@
       %th Tweet
       %th Date
   %tbody
-    - tweets.each do |tweet|
-      %tr
-        %td.profile_image
-          %img{:src => tweet['profile_image_url'] }
-        %td.from_user= tweet['from_user']
-        %td.text= tweet['text']
-        %td.date= tweet['created_at'][/[^+]*/]
+    - if tweets.empty?
+      %p Looks like no one wants to talk about #{query}
+    - else
+      - tweets.each do |tweet|
+        %tr
+          %td.profile_image
+            %img{:src => tweet['profile_image_url'] }
+          %td.from_user= tweet['from_user']
+          %td.text= tweet['text']
+          %td.date= tweet['created_at'][/[^+]*/]

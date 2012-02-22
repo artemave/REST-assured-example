@@ -12,3 +12,12 @@ Feature: Check popular tweets
     When I view tweets page
     And I ask for popular tweets about "Obama"
     Then I should see those tweets
+
+  Scenario: No tweets
+    Given there are no popular tweets about "Jira"
+    When I view tweets page
+    And I ask for popular tweets about "Jira"
+    Then I should see
+      """
+      Looks like no one wants to talk about Jira
+      """
