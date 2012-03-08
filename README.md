@@ -11,14 +11,15 @@ Install app:
     $ git clone git://github.com/artemave/REST-assured-example.git
     $ cd REST-assured-example
     $ bundle install # gem install bundler if it is not there yet
+    $ ./tweet_checker # then visit http://localhost:4567/popular_tweets
 
 Run app with twitter stubbed out:
     
-    $ TWITTER_HOST=http://localhost:4578 bundle exec ruby tweet_checker.rb
+    $ TWITTER_HOST=http://localhost:4578 ./tweet_checker
 
-Run tests:
+Then run tests:
 
-    $ bundle exec cucumber
+    $ bundle exec cucumber # in separate shell
 
 ## Author
 

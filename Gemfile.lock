@@ -106,5 +106,6 @@ DEPENDENCIES
   rest-assured
   rest-client
   rspec
+  sinatra
   sqlite3
   thin

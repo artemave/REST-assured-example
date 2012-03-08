@@ -1,7 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+Bundler.setup(:default)
+
 require 'sinatra'
+require 'rest-client'
 require 'uri'
 require 'json'
-require 'rest-client'
 require 'haml'
 
 TWITTER_HOST = ENV['TWITTER_HOST'] || 'http://search.twitter.com'
