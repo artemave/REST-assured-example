@@ -1,6 +1,6 @@
 ## REST Assured example
 
-Sample app that uses [REST Assured](https://github.com/BBC/REST-assured) in its integration testing (cucumber). It implements a page where user can query twitter for popular tweets that match search term.
+Sample app that uses [REST-assured](https://github.com/BBC/REST-assured) in its integration testing (cucumber). It implements a page where user can query twitter for popular tweets that match search term.
 
 ## Usage
 
