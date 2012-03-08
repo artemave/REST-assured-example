@@ -1,6 +1,4 @@
-# REST Assured example
-
-## Overview
+## REST Assured example
 
 Sample app that uses [REST Assured](https://github.com/BBC/REST-assured) for its integration testing. It implements a page where user can query twitter for popular tweets that match search term.
 
