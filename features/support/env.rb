@@ -3,10 +3,12 @@ require 'rspec'
 require 'rest-client'
 require 'rest-assured'
 
+ENV['TWITTER_HOST'] = 'http://localhost:4578'
+require_relative '../../tweet_checker'
+
 Capybara.configure do |config|
   config.default_driver = :selenium
-  config.run_server = false
-  config.app_host = "http://localhost:4567"
+  config.app = Sinatra::Application.new
 end
 
 World(Capybara)
